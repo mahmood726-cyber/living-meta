@@ -1,0 +1,79 @@
+# Living Meta-Analysis - Docker Compose
+# Local development environment with hot reload
+
+version: '3.8'
+
+services:
+  # Main application with hot reload
+  app:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile
+      target: build
+    container_name: living-meta-dev
+    ports:
+      - "5173:5173"
+      - "8080:8080"
+    volumes:
+      - ../..:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_API_BASE_URL=http://localhost:5173/api
+      - VITE_ENABLE_SW=false
+    command: npm run dev
+    stdin_open: true
+    tty: true
+
+  # Production build preview
+  preview:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/Dockerfile
+    container_name: living-meta-preview
+    ports:
+      - "3000:8080"
+    environment:
+      - NODE_ENV=production
+
+  # Database for future features
+  db:
+    image: postgres:16-alpine
+    container_name: living-meta-db
+    environment:
+      POSTGRES_USER: lma_user
+      POSTGRES_PASSWORD: lma_password
+      POSTGRES_DB: living_meta
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lma_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for caching/sessions
+  redis:
+    image: redis:7-alpine
+    container_name: living-meta-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  default:
+    name: living-meta-network

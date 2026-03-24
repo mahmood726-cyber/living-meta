@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "build:single": "vite build -c vite.single.config.js && node scripts/inline-assets.js"
+  }
+}

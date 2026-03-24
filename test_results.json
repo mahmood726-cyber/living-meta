@@ -1,0 +1,607 @@
+{
+  "summary": {
+    "total": 85,
+    "passed": 84,
+    "failed": 0,
+    "skipped": 1,
+    "elapsed_seconds": 48.334685,
+    "pass_rate": "98.8%"
+  },
+  "results": [
+    {
+      "name": "Page title contains 'Living Meta'",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.310394"
+    },
+    {
+      "name": "Main app container (#app) exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.369505"
+    },
+    {
+      "name": "Header with role='banner' exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.404339"
+    },
+    {
+      "name": "Main content area (#main-content) exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.438512"
+    },
+    {
+      "name": "Footer with role='contentinfo' exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.470895"
+    },
+    {
+      "name": "Skip link exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.504241"
+    },
+    {
+      "name": "ARIA live region exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.525221"
+    },
+    {
+      "name": "Main landmark (role='main') exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.547901"
+    },
+    {
+      "name": "Keyboard help button exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.580947"
+    },
+    {
+      "name": "New Project button visible and enabled",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.634892"
+    },
+    {
+      "name": "Home link exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:55.652053"
+    },
+    {
+      "name": "New Project modal opens",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:56.881041"
+    },
+    {
+      "name": "Modal contains input field",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:56.921005"
+    },
+    {
+      "name": "Modal contains submit button",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:56.940787"
+    },
+    {
+      "name": "Keyboard shortcuts modal opens",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.023507"
+    },
+    {
+      "name": "Keyboard shortcuts modal has content",
+      "status": "PASS",
+      "message": "Found: ['Navigation', 'Actions', 'Screening', 'Esc']",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.064511"
+    },
+    {
+      "name": "Keyboard shortcuts modal closes",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.744309"
+    },
+    {
+      "name": "LMA namespace exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.753039"
+    },
+    {
+      "name": "LMA.metaAnalysis() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.763926"
+    },
+    {
+      "name": "LMA.metaAnalysisDL() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.777752"
+    },
+    {
+      "name": "LMA.metaAnalysisREML() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.789428"
+    },
+    {
+      "name": "LMA.metaAnalysisFE() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.798789"
+    },
+    {
+      "name": "LMA.eggerTest() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.808600"
+    },
+    {
+      "name": "LMA.beggTest() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.819524"
+    },
+    {
+      "name": "LMA.trimAndFill() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.827830"
+    },
+    {
+      "name": "LMA.failsafeN() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.836364"
+    },
+    {
+      "name": "LMA.hedgesG() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.848560"
+    },
+    {
+      "name": "LMA.logOddsRatio() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.856719"
+    },
+    {
+      "name": "LMA.logRiskRatio() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.865270"
+    },
+    {
+      "name": "LMA.fisherZ() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.879900"
+    },
+    {
+      "name": "LMA.runValidation() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.888975"
+    },
+    {
+      "name": "LMA.printValidationReport() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.896662"
+    },
+    {
+      "name": "LMA.runTests() exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.903643"
+    },
+    {
+      "name": "Validation dataset 'bcg' exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.914371"
+    },
+    {
+      "name": "Validation dataset 'aspirin' exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.914394"
+    },
+    {
+      "name": "Validation dataset 'homogeneous' exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.914403"
+    },
+    {
+      "name": "Validation dataset 'heterogeneous' exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.914408"
+    },
+    {
+      "name": "Validation dataset 'single' exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.914414"
+    },
+    {
+      "name": "DerSimonian-Laird meta-analysis",
+      "status": "PASS",
+      "message": "estimate=-0.3764, I2=0.0%",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.928530"
+    },
+    {
+      "name": "REML meta-analysis",
+      "status": "PASS",
+      "message": "estimate=-0.3767",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.944282"
+    },
+    {
+      "name": "Fixed-Effect meta-analysis",
+      "status": "PASS",
+      "message": "tau2=0 (correct)",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.956764"
+    },
+    {
+      "name": "Egger's test (WLS)",
+      "status": "PASS",
+      "message": "intercept=7.1492, p=None",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.965560"
+    },
+    {
+      "name": "Begg's test",
+      "status": "PASS",
+      "message": "tau=0.2821, p=0.1795",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.973437"
+    },
+    {
+      "name": "Trim and Fill",
+      "status": "PASS",
+      "message": "k0=0, adjusted=-0.6932",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.982597"
+    },
+    {
+      "name": "Fail-safe N",
+      "status": "PASS",
+      "message": "N=1284, robust=True",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.990358"
+    },
+    {
+      "name": "Hedges' g calculation",
+      "status": "PASS",
+      "message": "g=0.9870, J=0.9870",
+      "details": null,
+      "timestamp": "2026-01-19T22:41:59.997712"
+    },
+    {
+      "name": "Log Odds Ratio",
+      "status": "PASS",
+      "message": "logOR=0.6931, OR=2.0000",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.004660"
+    },
+    {
+      "name": "Log OR zero-cell correction",
+      "status": "PASS",
+      "message": "corrected=true, logOR=-3.0445",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.012061"
+    },
+    {
+      "name": "Log Risk Ratio",
+      "status": "PASS",
+      "message": "logRR=0.6931, RR=2.0000",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.020750"
+    },
+    {
+      "name": "Fisher's z transformation",
+      "status": "PASS",
+      "message": "z=0.5493 (expected ~0.5493)",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.032517"
+    },
+    {
+      "name": "R Validation: All tests",
+      "status": "PASS",
+      "message": "19/19 passed",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048386"
+    },
+    {
+      "name": "R Validation: BCG Vaccine (dat.bcg) (DL)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048415"
+    },
+    {
+      "name": "R Validation: BCG Vaccine (dat.bcg) (FE)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048425"
+    },
+    {
+      "name": "R Validation: BCG Vaccine (dat.bcg) (REML)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048433"
+    },
+    {
+      "name": "R Validation: Aspirin/MI (dat.hart1999) (DL)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048442"
+    },
+    {
+      "name": "R Validation: Aspirin/MI (dat.hart1999) (FE)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048448"
+    },
+    {
+      "name": "R Validation: Aspirin/MI (dat.hart1999) (REML)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048455"
+    },
+    {
+      "name": "R Validation: Homogeneous effects (DL)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048465"
+    },
+    {
+      "name": "R Validation: Homogeneous effects (FE)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048471"
+    },
+    {
+      "name": "R Validation: Homogeneous effects (REML)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048478"
+    },
+    {
+      "name": "R Validation: Heterogeneous effects (DL)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048485"
+    },
+    {
+      "name": "R Validation: Heterogeneous effects (REML)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048491"
+    },
+    {
+      "name": "R Validation: Single study (DL)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048498"
+    },
+    {
+      "name": "R Validation: Single study (FE)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048510"
+    },
+    {
+      "name": "R Validation: Single study (REML)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048516"
+    },
+    {
+      "name": "R Validation: Magnesium/MI (dat.egger2001) (DL)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048525"
+    },
+    {
+      "name": "R Validation: Magnesium/MI (dat.egger2001) (FE)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048531"
+    },
+    {
+      "name": "R Validation: Magnesium/MI (dat.egger2001) (REML)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048537"
+    },
+    {
+      "name": "R Validation: Large dataset (k=50) (DL)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048548"
+    },
+    {
+      "name": "R Validation: Large dataset (k=50) (REML)",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.048555"
+    },
+    {
+      "name": "Built-in test suite",
+      "status": "PASS",
+      "message": "24/24 tests passed",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:00.064762"
+    },
+    {
+      "name": "Navigation to #/validation",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:02.097169"
+    },
+    {
+      "name": "Validation page content loaded",
+      "status": "SKIP",
+      "message": "Content may be minimal",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:02.165717"
+    },
+    {
+      "name": "Plot elements detected",
+      "status": "PASS",
+      "message": "SVG: 3, Canvas: 0",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:05.271094"
+    },
+    {
+      "name": "No duplicate plot container IDs",
+      "status": "PASS",
+      "message": "Found 0 unique containers",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:05.296189"
+    },
+    {
+      "name": "Forest plot count",
+      "status": "PASS",
+      "message": "Count: 0",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:05.319025"
+    },
+    {
+      "name": "Funnel plot count",
+      "status": "PASS",
+      "message": "Count: 0",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:05.319047"
+    },
+    {
+      "name": "LMA.db namespace exists",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:05.331578"
+    },
+    {
+      "name": "IndexedDB version >= 2 (with migrations)",
+      "status": "PASS",
+      "message": "Version: 2",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:06.380085"
+    },
+    {
+      "name": "State store exists with getState/dispatch",
+      "status": "PASS",
+      "message": "",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:06.422489"
+    },
+    {
+      "name": "State actions exist",
+      "status": "PASS",
+      "message": "Found: ['setProjects', 'setCurrentProject', 'setSearchRun']",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:06.442803"
+    },
+    {
+      "name": "Route #/ loads",
+      "status": "PASS",
+      "message": "Title: Projects | Living Meta-Analysis",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:07.495893"
+    },
+    {
+      "name": "Route #/validation loads",
+      "status": "PASS",
+      "message": "Title: R Validation | Living Meta-Analysis",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:08.531218"
+    },
+    {
+      "name": "Empty input handling",
+      "status": "PASS",
+      "message": "Graceful handling of empty arrays",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:08.540546"
+    },
+    {
+      "name": "Egger insufficient studies error",
+      "status": "PASS",
+      "message": "Need at least 3 studies for Egger test",
+      "details": null,
+      "timestamp": "2026-01-19T22:42:08.549410"
+    }
+  ]
+}

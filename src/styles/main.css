@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-gray-50 text-gray-900 min-h-screen;
+  }
+
+  h1 {
+    @apply text-3xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+}
+
+/* Component styles */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn bg-gray-100 text-gray-700 hover:bg-gray-200 focus:ring-gray-500;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger-500 text-white hover:bg-danger-700 focus:ring-danger-500;
+  }
+
+  .btn-success {
+    @apply btn bg-success-500 text-white hover:bg-success-700 focus:ring-success-500;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+  }
+
+  .input {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply badge bg-success-50 text-success-700;
+  }
+
+  .badge-warning {
+    @apply badge bg-warning-50 text-warning-700;
+  }
+
+  .badge-danger {
+    @apply badge bg-danger-50 text-danger-700;
+  }
+
+  .badge-info {
+    @apply badge bg-primary-50 text-primary-700;
+  }
+}
+
+/* Custom scrollbar */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 3px;
+  }
+}
+
+/* Forest plot specific styles */
+.forest-plot {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.forest-plot .diamond {
+  fill: #2563eb;
+}
+
+.forest-plot .square {
+  fill: #1e40af;
+}
+
+.forest-plot .line {
+  stroke: #374151;
+  stroke-width: 1;
+}
+
+.forest-plot .null-line {
+  stroke: #9ca3af;
+  stroke-dasharray: 4 2;
+}
+
+/* Funnel plot styles */
+.funnel-plot .point {
+  fill: #3b82f6;
+  stroke: #1e40af;
+  stroke-width: 1;
+}
+
+.funnel-plot .region {
+  fill: #f3f4f6;
+}
+
+/* Network graph styles */
+.network-graph .node {
+  fill: #3b82f6;
+  stroke: #1e40af;
+  stroke-width: 2;
+}
+
+.network-graph .edge {
+  stroke: #9ca3af;
+  stroke-width: 2;
+}
+
+/* TSA chart styles */
+.tsa-chart .boundary {
+  stroke: #ef4444;
+  stroke-width: 2;
+  fill: none;
+}
+
+.tsa-chart .z-curve {
+  stroke: #2563eb;
+  stroke-width: 2;
+  fill: none;
+}
+
+.tsa-chart .ris-line {
+  stroke: #10b981;
+  stroke-dasharray: 4 4;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply animate-spin h-5 w-5 border-2 border-gray-200 border-t-primary-600 rounded-full;
+}
+
+/* Tooltip */
+.tooltip {
+  @apply absolute z-50 px-2 py-1 text-xs text-white bg-gray-900 rounded shadow-lg whitespace-nowrap;
+}
+
+/* Coverage banner colors */
+.coverage-adequate {
+  @apply bg-success-50 border-success-500 text-success-700;
+}
+
+.coverage-marginal {
+  @apply bg-warning-50 border-warning-500 text-warning-700;
+}
+
+.coverage-insufficient {
+  @apply bg-danger-50 border-danger-500 text-danger-700;
+}
+
+/* Evidence integrity flags */
+.eim-high {
+  @apply text-danger-700 bg-danger-50;
+}
+
+.eim-moderate {
+  @apply text-warning-700 bg-warning-50;
+}
+
+.eim-low {
+  @apply text-success-700 bg-success-50;
+}
