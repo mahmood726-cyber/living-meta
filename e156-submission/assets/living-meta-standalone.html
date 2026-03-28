@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Living Meta-Analysis - Single File Version">
+  <title>Living Meta-Analysis | Single File</title>
+  <style>
+    /* Tailwind-like utility classes */
+    *,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}
+    html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:system-ui,-apple-system,sans-serif}
+    body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#f9fafb;color:#111827}
+
+    /* Layout */
+    .flex{display:flex}
+    .flex-col{flex-direction:column}
+    .flex-1{flex:1}
+    .items-center{align-items:center}
+    .justify-center{justify-content:center}
+    .justify-between{justify-content:space-between}
+    .space-x-2>:not([hidden])~:not([hidden]){margin-left:0.5rem}
+    .space-x-4>:not([hidden])~:not([hidden]){margin-left:1rem}
+    .space-y-2>:not([hidden])~:not([hidden]){margin-top:0.5rem}
+    .space-y-4>:not([hidden])~:not([hidden]){margin-top:1rem}
+    .min-h-screen{min-height:100vh}
+    .max-w-7xl{max-width:80rem;margin-left:auto;margin-right:auto}
+    .px-4{padding-left:1rem;padding-right:1rem}
+    .px-6{padding-left:1.5rem;padding-right:1.5rem}
+    .py-2{padding-top:0.5rem;padding-bottom:0.5rem}
+    .py-4{padding-top:1rem;padding-bottom:1rem}
+    .py-8{padding-top:2rem;padding-bottom:2rem}
+    .sticky{position:sticky;top:0;z-index:40}
+    .fixed{position:fixed;bottom:1rem;right:1rem;z-index:50}
+    .hidden{display:none}
+    .block{display:block}
+    .grid{display:grid}
+    .grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .gap-2{gap:0.5rem}
+    .gap-4{gap:1rem}
+    .gap-6{gap:1.5rem}
+    .w-full{width:100%}
+    .h-screen{height:100vh}
+    .h-16{height:4rem}
+    .mt-2{margin-top:0.5rem}
+    .mt-4{margin-top:1rem}
+    .mt-6{margin-top:1.5rem}
+    .mt-8{margin-top:2rem}
+    .mb-2{margin-bottom:0.5rem}
+    .mb-4{margin-bottom:1rem}
+    .mx-auto{margin-left:auto;margin-right:auto}
+
+    /* Text */
+    .text-sm{font-size:0.875rem}
+    .text-base{font-size:1rem}
+    .text-lg{font-size:1.125rem}
+    .text-xl{font-size:1.25rem}
+    .text-2xl{font-size:1.5rem}
+    .text-3xl{font-size:1.875rem}
+    .font-medium{font-weight:500}
+    .font-semibold{font-weight:600}
+    .font-bold{font-weight:700}
+    .text-center{text-align:center}
+    .text-gray-500{color:#6b7280}
+    .text-gray-700{color:#374151}
+    .text-gray-900{color:#111827}
+    .text-primary-600{color:#2563eb}
+    .text-danger-600{color:#dc2626}
+    .text-success-600{color:#16a34a}
+
+    /* Backgrounds */
+    .bg-white{background-color:#fff}
+    .bg-gray-50{background-color:#f9fafb}
+    .bg-primary-600{background-color:#2563eb}
+    .bg-danger-500{background-color:#ef4444}
+    .bg-gray-100{background-color:#f3f4f6}
+
+    /* Borders */
+    .border{border-width:1px;border-style:solid}
+    .border-b{border-bottom-width:1px}
+    .border-t{border-top-width:1px}
+    .border-gray-200{border-color:#e5e7eb}
+    .border-gray-300{border-color:#d1d5db}
+    .rounded{border-radius:0.25rem}
+    .rounded-lg{border-radius:0.5rem}
+    .rounded-xl{border-radius:0.75rem}
+
+    /* Buttons */
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:0.5rem 1rem;font-size:0.875rem;font-weight:500;border-radius:0.5rem;cursor:pointer;border:none;transition:all 0.15s}
+    .btn:hover{opacity:0.9}
+    .btn:disabled{opacity:0.5;cursor:not-allowed}
+    .btn-primary{background-color:#2563eb;color:white}
+    .btn-secondary{background-color:#f3f4f6;color:#374151}
+    .btn-danger{background-color:#ef4444;color:white}
+
+    /* Inputs */
+    .input{width:100%;padding:0.5rem 0.75rem;border:1px solid #d1d5db;border-radius:0.5rem;font-size:0.875rem}
+    .input:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 2px rgba(37,99,235,0.1)}
+    textarea.input{min-height:80px;font-family:monospace}
+
+    /* Cards */
+    .card{background:white;border-radius:0.75rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);border:1px solid #e5e7eb;padding:1.5rem}
+
+    /* Tables */
+    .table{width:100%;border-collapse:collapse}
+    .table th,.table td{padding:0.75rem;text-align:left;border-bottom:1px solid #e5e7eb}
+    .table th{font-weight:600;background:#f9fafb}
+    .table tr:hover{background:#f9fafb}
+
+    /* Spinner */
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .spinner{width:1.5rem;height:1.5rem;border:2px solid #e5e7eb;border-top-color:#2563eb;border-radius:9999px;animation:spin 0.6s linear infinite}
+
+    /* Toast */
+    .toast{padding:0.75rem 1rem;border-radius:0.5rem;box-shadow:0 4px 6px rgba(0,0,0,0.1);display:flex;align-items:center;gap:0.5rem}
+    .toast-success{background:#dcfce7;color:#166534}
+    .toast-error{background:#fee2e2;color:#991b1b}
+    .toast-info{background:#dbeafe;color:#1e40af}
+
+    /* Forest plot styles */
+    .forest-plot{font-family:monospace;overflow-x:auto}
+    .forest-plot svg{display:block;margin:0 auto}
+    .forest-plot .study-line{stroke:#374151;stroke-width:1}
+    .forest-plot .ci-line{stroke:#9ca3af;stroke-width:2}
+    .forest-plot .diamond{fill:#2563eb}
+    .forest-plot .square{fill:#1e40af}
+    .forest-plot .null-line{stroke:#e5e7eb;stroke-dasharray:4 2}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl px-4 py-4">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold">📊 Living Meta-Analysis</h1>
+          <p class="text-sm text-gray-500">Single File Version</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl px-4 py-8">
+      <!-- Input Section -->
+      <div class="card mb-6">
+        <h2 class="text-xl font-semibold mb-4">Study Data Input</h2>
+        <p class="text-gray-700 mb-4">Enter study data in JSON format (one study per line) or CSV format:</p>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Data Format</label>
+            <select id="inputFormat" class="input">
+              <option value="json">JSON</option>
+              <option value="csv">CSV</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Effect Measure</label>
+            <select id="effectMeasure" class="input">
+              <option value="OR">Odds Ratio (OR)</option>
+              <option value="RR">Risk Ratio (RR)</option>
+              <option value="RD">Risk Difference (RD)</option>
+              <option value="MD">Mean Difference (MD)</option>
+              <option value="SMD">Standardized Mean Difference (SMD)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="jsonExample" class="mb-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Studies (JSON - one per line)</label>
+          <p class="text-sm text-gray-500 mb-2">Format: {"label": "Study Name", "events1": 10, "n1": 100, "events2": 15, "n2": 100}</p>
+          <textarea id="studyData" class="input" rows="8" placeholder='{"label": "Study A", "events1": 10, "n1": 100, "events2": 15, "n2": 100}
+{"label": "Study B", "events1": 12, "n1": 98, "events2": 18, "n2": 102}
+{"label": "Study C", "events1": 8, "n1": 95, "events2": 12, "n2": 98}
+{"label": "Study D", "events1": 15, "n1": 110, "events2": 20, "n2": 105}'></textarea>
+        </div>
+
+        <div id="csvExample" class="mb-4 hidden">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Studies (CSV format)</label>
+          <p class="text-sm text-gray-500 mb-2">Header: label,events1,n1,events2,n2</p>
+          <textarea id="csvData" class="input" rows="8" placeholder="label,events1,n1,events2,n2
+Study A,10,100,15,100
+Study B,12,98,18,102
+Study C,8,95,12,98
+Study D,15,110,20,105"></textarea>
+        </div>
+
+        <div class="flex gap-2">
+          <button id="analyzeBtn" class="btn btn-primary">Run Meta-Analysis</button>
+          <button id="clearBtn" class="btn btn-secondary">Clear</button>
+          <button id="loadExampleBtn" class="btn btn-secondary">Load Example</button>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div id="results" class="hidden">
+        <div class="card mb-6">
+          <h2 class="text-xl font-semibold mb-4">Meta-Analysis Results</h2>
+          <div id="resultsSummary"></div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 mb-6">
+          <!-- Fixed Effect -->
+          <div class="card">
+            <h3 class="text-lg font-semibold mb-2">Fixed Effect Model</h3>
+            <div id="fixedEffectResults"></div>
+          </div>
+
+          <!-- Random Effects -->
+          <div class="card">
+            <h3 class="text-lg font-semibold mb-2">Random Effects (DL)</h3>
+            <div id="randomEffectsResults"></div>
+          </div>
+        </div>
+
+        <!-- Heterogeneity -->
+        <div class="card mb-6">
+          <h3 class="text-lg font-semibold mb-2">Heterogeneity</h3>
+          <div id="heterogeneityResults"></div>
+        </div>
+
+        <!-- Forest Plot -->
+        <div class="card mb-6">
+          <h3 class="text-lg font-semibold mb-2">Forest Plot</h3>
+          <div id="forestPlot" class="forest-plot"></div>
+        </div>
+
+        <!-- Study Table -->
+        <div class="card mb-6">
+          <h3 class="text-lg font-semibold mb-2">Study Details</h3>
+          <div id="studyTable" class="overflow-x-auto"></div>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div id="loading" class="hidden flex justify-center py-8">
+        <div class="spinner"></div>
+      </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed bottom-4 right-4 space-y-2 z-50"></div>
+  </div>
+
+  <script>
+    /**
+     * Living Meta-Analysis - Single File Version
+     * Complete meta-analysis implementation in a single HTML file
+     */
+
+    // ============================================================================
+    // STATISTICAL FUNCTIONS
+    // ============================================================================
+
+    /**
+     * Calculate effect sizes from 2x2 table data
+     */
+    function calculateEffectSize(data, effectType) {
+      const { events1, n1, events2, n2 } = data;
+      const a = events1, b = n1 - events1;
+      const c = events2, d = n2 - events2;
+
+      let yi, vi;
+
+      switch (effectType) {
+        case 'OR': // Odds Ratio
+          if (a <= 0 || b <= 0 || c <= 0 || d <= 0) {
+            // Apply continuity correction
+            const cc = 0.5;
+            const adjA = a + cc, adjB = b + cc, adjC = c + cc, adjD = d + cc;
+            yi = Math.log((adjA * adjD) / (adjB * adjC));
+            vi = 1/adjA + 1/adjB + 1/adjC + 1/adjD;
+          } else {
+            yi = Math.log((a * d) / (b * c));
+            vi = 1/a + 1/b + 1/c + 1/d;
+          }
+          break;
+
+        case 'RR': // Risk Ratio
+          if (a <= 0 || c <= 0) {
+            const cc = 0.5;
+            const adjA = a + cc, adjC = c + cc;
+            yi = Math.log((adjA / (a + b + cc)) / (adjC / (c + d + cc)));
+            const p1 = (a + cc) / (a + b + 2 * cc);
+            const p2 = (c + cc) / (c + d + 2 * cc);
+            vi = (1 - p1) / (a + b + cc) + (1 - p2) / (c + d + cc);
+          } else {
+            const p1 = a / n1, p2 = c / n2;
+            yi = Math.log(p1 / p2);
+            vi = (1 - p1) / (n1 * p1) + (1 - p2) / (n2 * p2);
+          }
+          break;
+
+        case 'RD': // Risk Difference
+          const p1_RD = a / n1, p2_RD = c / n2;
+          yi = p1_RD - p2_RD;
+          vi = (p1_RD * (1 - p1_RD) / n1) + (p2_RD * (1 - p2_RD) / n2);
+          break;
+
+        default:
+          yi = 0;
+          vi = 1;
+      }
+
+      return { yi, vi, label: data.label, events1, n1, events2, n2 };
+    }
+
+    /**
+     * Fixed effect meta-analysis (Inverse Variance Weighting)
+     */
+    function fixedEffectsMetaAnalysis(studies) {
+      const k = studies.length;
+      if (k < 2) return { error: 'Need at least 2 studies' };
+
+      // Calculate weights
+      const weights = studies.map(s => 1 / s.vi);
+      const sumWeights = weights.reduce((a, b) => a + b, 0);
+
+      // Pooled estimate
+      const theta = studies.reduce((sum, s, i) => sum + s.yi * weights[i], 0) / sumWeights;
+
+      // Standard error
+      const se = Math.sqrt(1 / sumWeights);
+
+      // 95% CI
+      const ciLower = theta - 1.96 * se;
+      const ciUpper = theta + 1.96 * se;
+
+      // Z-test
+      const z = theta / se;
+      const pValue = 2 * (1 - normalCDF(Math.abs(z)));
+
+      // Heterogeneity Q
+      const Q = studies.reduce((sum, s) => sum + (1 / s.vi) * Math.pow(s.yi - theta, 2), 0);
+
+      // I²
+      const df = k - 1;
+      const I2 = Q > df ? ((Q - df) / Q) * 100 : 0;
+
+      return {
+        model: 'FE',
+        k,
+        theta,
+        se,
+        ciLower,
+        ciUpper,
+        z,
+        pValue,
+        Q,
+        df,
+        I2,
+        weights
+      };
+    }
+
+    /**
+     * DerSimonian-Laird random effects meta-analysis
+     */
+    function randomEffectsMetaAnalysis(studies) {
+      const feResult = fixedEffectsMetaAnalysis(studies);
+      if (feResult.error) return feResult;
+
+      const { k, Q, df } = feResult;
+
+      // Calculate tau² (DerSimonian-Laird estimator)
+      let tau2 = 0;
+      if (Q > df) {
+        tau2 = (Q - df) / (feResult.weights.reduce((sum, w) => sum + w * w, 0) - (feResult.weights.reduce((a, b) => a + b, 0) / feResult.weights.reduce((a, b) => a + b, 0)));
+      }
+      tau2 = Math.max(0, tau2);
+
+      // Calculate random effects weights
+      const reWeights = studies.map(s => 1 / (s.vi + tau2));
+      const sumReweights = reWeights.reduce((a, b) => a + b, 0);
+
+      // Pooled estimate
+      const theta = studies.reduce((sum, s, i) => sum + s.yi * reWeights[i], 0) / sumReweights;
+
+      // Standard error
+      const se = Math.sqrt(1 / sumReweights);
+
+      // 95% CI
+      const ciLower = theta - 1.96 * se;
+      const ciUpper = theta + 1.96 * se;
+
+      // Z-test
+      const z = theta / se;
+      const pValue = 2 * (1 - normalCDF(Math.abs(z)));
+
+      // I² for RE model
+      const typicalVariance = 1 / sumReweights;
+      const I2 = tau2 > 0 ? (tau2 / (tau2 + typicalVariance)) * 100 : 0;
+
+      // Prediction interval
+      let piLower = null, piUpper = null;
+      if (k >= 3) {
+        const piSE = Math.sqrt(typicalVariance + tau2);
+        const tCrit = 1.96; // Simplified, should use t-distribution
+        piLower = theta - tCrit * piSE;
+        piUpper = theta + tCrit * piSE;
+      }
+
+      return {
+        model: 'RE-DL',
+        k,
+        theta,
+        se,
+        ciLower,
+        ciUpper,
+        z,
+        pValue,
+        tau2,
+        tau: Math.sqrt(tau2),
+        Q,
+        df,
+        I2,
+        piLower,
+        piUpper,
+        weights: reWeights
+      };
+    }
+
+    /**
+     * Normal CDF (approximation)
+     */
+    function normalCDF(x) {
+      const a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741;
+      const a4 = -1.453152027, a5 = 1.061405429, p = 0.3275911;
+
+      const sign = x < 0 ? -1 : 1;
+      x = Math.abs(x) / Math.sqrt(2);
+
+      const t = 1.0 / (1.0 + p * x);
+      const y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+
+      return 0.5 * (1.0 + sign * y);
+    }
+
+    // ============================================================================
+    // UI FUNCTIONS
+    // ============================================================================
+
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.textContent = message;
+      container.appendChild(toast);
+
+      setTimeout(() => toast.remove(), 5000);
+    }
+
+    function formatNumber(num, decimals = 4) {
+      if (isNaN(num)) return 'N/A';
+      return num.toFixed(decimals);
+    }
+
+    function formatCI(lower, upper, decimals = 3) {
+      return `[${formatNumber(lower, decimals)}, ${formatNumber(upper, decimals)}]`;
+    }
+
+    function renderResults(studies, feResult, reResult, effectType) {
+      // Summary
+      const summaryHtml = `
+        <div class="grid grid-cols-4 gap-4 text-center">
+          <div>
+            <p class="text-sm text-gray-500">Number of Studies</p>
+            <p class="text-2xl font-bold">${studies.length}</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Total Sample Size</p>
+            <p class="text-2xl font-bold">${studies.reduce((sum, s) => sum + s.n1 + s.n2, 0)}</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Heterogeneity (I²)</p>
+            <p class="text-2xl font-bold">${reResult.I2.toFixed(1)}%</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">Effect Measure</p>
+            <p class="text-2xl font-bold">${effectType}</p>
+          </div>
+        </div>
+      `;
+      document.getElementById('resultsSummary').innerHTML = summaryHtml;
+
+      // Fixed Effect
+      document.getElementById('fixedEffectResults').innerHTML = `
+        <div class="space-y-2">
+          <div class="flex justify-between"><span>Pooled Estimate:</span><span class="font-semibold">${formatNumber(feResult.theta, 3)}</span></div>
+          <div class="flex justify-between"><span>95% CI:</span><span>${formatCI(feResult.ciLower, feResult.ciUpper)}</span></div>
+          <div class="flex justify-between"><span>Z-value:</span><span>${formatNumber(feResult.z, 2)}</span></div>
+          <div class="flex justify-between"><span>P-value:</span><span class="${feResult.pValue < 0.05 ? 'text-danger-600' : ''}">${feResult.pValue < 0.001 ? '< 0.001' : formatNumber(feResult.pValue, 3)}</span></div>
+        </div>
+      `;
+
+      // Random Effects
+      document.getElementById('randomEffectsResults').innerHTML = `
+        <div class="space-y-2">
+          <div class="flex justify-between"><span>Pooled Estimate:</span><span class="font-semibold">${formatNumber(reResult.theta, 3)}</span></div>
+          <div class="flex justify-between"><span>95% CI:</span><span>${formatCI(reResult.ciLower, reResult.ciUpper)}</span></div>
+          <div class="flex justify-between"><span>τ²:</span><span>${formatNumber(reResult.tau2, 4)}</span></div>
+          <div class="flex justify-between"><span>τ:</span><span>${formatNumber(reResult.tau, 4)}</span></div>
+          ${reResult.piLower ? `<div class="flex justify-between"><span>Prediction Interval:</span><span>${formatCI(reResult.piLower, reResult.piUpper)}</span></div>` : ''}
+        </div>
+      `;
+
+      // Heterogeneity
+      document.getElementById('heterogeneityResults').innerHTML = `
+        <div class="grid grid-cols-4 gap-4 text-center">
+          <div>
+            <p class="text-sm text-gray-500">Q</p>
+            <p class="font-semibold">${formatNumber(reResult.Q, 2)}</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">df</p>
+            <p class="font-semibold">${reResult.df}</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">I²</p>
+            <p class="font-semibold">${reResult.I2.toFixed(1)}%</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-500">τ²</p>
+            <p class="font-semibold">${formatNumber(reResult.tau2, 4)}</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500 mt-4">
+          ${reResult.I2 < 25 ? 'Low heterogeneity' : reResult.I2 < 50 ? 'Moderate heterogeneity' : reResult.I2 < 75 ? 'Substantial heterogeneity' : 'Considerable heterogeneity'}
+        </p>
+      `;
+
+      // Forest Plot
+      renderForestPlot(studies, reResult);
+
+      // Study Table
+      renderStudyTable(studies, reResult);
+
+      document.getElementById('results').classList.remove('hidden');
+    }
+
+    function renderForestPlot(studies, result) {
+      const width = 600;
+      const height = 100 + studies.length * 40;
+      const margin = { top: 20, right: 100, bottom: 40, left: 150 };
+
+      const plotWidth = width - margin.left - margin.right;
+      const plotHeight = height - margin.top - margin.bottom;
+
+      // Find x-axis range
+      const allEffects = [...studies.map(s => s.yi), result.ciLower, result.ciUpper];
+      const minX = Math.min(...allEffects);
+      const maxX = Math.max(...allEffects);
+      const xRange = maxX - minX;
+      const padding = xRange * 0.1;
+
+      const xScale = (value) => margin.left + ((value - (minX - padding)) / (xRange + 2 * padding)) * plotWidth;
+
+      let svg = `
+        <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect x="0" y="0" width="${width}" height="${height}" fill="white"/>
+
+          <!-- Null line -->
+          <line x1="${xScale(0)}" y1="${margin.top}" x2="${xScale(0)}" y2="${height - margin.bottom}" class="null-line"/>
+
+          <!-- X-axis -->
+          <line x1="${margin.left}" y1="${height - margin.bottom}" x2="${width - margin.right}" y2="${height - margin.bottom}" stroke="#374151" stroke-width="1"/>
+      `;
+
+      // X-axis labels
+      const ticks = 5;
+      for (let i = 0; i <= ticks; i++) {
+        const value = minX - padding + (xRange + 2 * padding) * (i / ticks);
+        const x = xScale(value);
+        svg += `
+          <line x1="${x}" y1="${height - margin.bottom}" x2="${x}" y2="${height - margin.bottom + 5}" stroke="#374151" stroke-width="1"/>
+          <text x="${x}" y="${height - margin.bottom + 20}" text-anchor="middle" font-size="12">${value.toFixed(2)}</text>
+        `;
+      }
+      svg += `<text x="${margin.left + plotWidth / 2}" y="${height - 5}" text-anchor="middle" font-size="12">Log Effect Size</text>`;
+
+      // Study rows
+      studies.forEach((study, i) => {
+        const y = margin.top + i * 40 + 20;
+        const studyWidth = plotWidth / studies.length;
+
+        // CI line
+        const x1 = xScale(study.yi - 1.96 * Math.sqrt(study.vi));
+        const x2 = xScale(study.yi + 1.96 * Math.sqrt(study.vi));
+
+        svg += `
+          <!-- Study ${study.label} -->
+          <text x="${margin.left - 10}" y="${y + 4}" text-anchor="end" font-size="12">${study.label}</text>
+          <line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" class="ci-line"/>
+          <rect x="${xScale(study.yi) - 5}" y="${y - 5}" width="10" height="10" class="square"/>
+          <text x="${width - margin.right + 10}" y="${y + 4}" text-anchor="start" font-size="12">${formatNumber(study.yi, 2)} [${formatNumber(study.yi - 1.96 * Math.sqrt(study.vi), 2)}, ${formatNumber(study.yi + 1.96 * Math.sqrt(study.vi), 2)}]</text>
+        `;
+      });
+
+      // Pooled result
+      const pooledY = margin.top + studies.length * 40 + 30;
+      const pooledX1 = xScale(result.ciLower);
+      const pooledX2 = xScale(result.ciUpper);
+      const diamondSize = 10;
+
+      svg += `
+        <!-- Pooled -->
+        <text x="${margin.left - 10}" y="${pooledY + 4}" text-anchor="end" font-size="12" font-weight="bold">Pooled (RE)</text>
+        <line x1="${pooledX1}" y1="${pooledY}" x2="${pooledX2}" y2="${pooledY}" class="study-line"/>
+        <polygon points="${xScale(result.theta)},${pooledY - diamondSize/2} ${xScale(result.theta) + diamondSize/2},${pooledY} ${xScale(result.theta)},${pooledY + diamondSize/2} ${xScale(result.theta) - diamondSize/2},${pooledY}" class="diamond"/>
+        <text x="${width - margin.right + 10}" y="${pooledY + 4}" text-anchor="start" font-size="12" font-weight="bold">${formatNumber(result.theta, 2)} ${formatCI(result.ciLower, result.ciUpper)}</text>
+      `;
+
+      svg += '</svg>';
+      document.getElementById('forestPlot').innerHTML = svg;
+    }
+
+    function renderStudyTable(studies, result) {
+      let html = `
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Study</th>
+              <th>Events1/N1</th>
+              <th>Events2/N2</th>
+              <th>Effect Size</th>
+              <th>SE</th>
+              <th>Weight (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      const totalWeight = result.weights.reduce((a, b) => a + b, 0);
+
+      studies.forEach((study, i) => {
+        const weight = result.weights[i];
+        const weightPercent = (weight / totalWeight) * 100;
+
+        html += `
+          <tr>
+            <td>${study.label}</td>
+            <td>${study.events1}/${study.n1}</td>
+            <td>${study.events2}/${study.n2}</td>
+            <td>${formatNumber(study.yi, 3)}</td>
+            <td>${formatNumber(Math.sqrt(study.vi), 3)}</td>
+            <td>${weightPercent.toFixed(1)}%</td>
+          </tr>
+        `;
+      });
+
+      html += `
+          </tbody>
+        </table>
+      `;
+
+      document.getElementById('studyTable').innerHTML = html;
+    }
+
+    function parseStudyData(input, format) {
+      try {
+        const lines = input.trim().split('\n').filter(line => line.trim());
+        const studies = [];
+
+        for (const line of lines) {
+          let study;
+          if (format === 'json') {
+            study = JSON.parse(line);
+          } else {
+            const parts = line.split(',').map(p => p.trim());
+            study = {
+              label: parts[0],
+              events1: parseInt(parts[1]),
+              n1: parseInt(parts[2]),
+              events2: parseInt(parts[3]),
+              n2: parseInt(parts[4])
+            };
+          }
+
+          // Validate
+          if (!study.label || isNaN(study.events1) || isNaN(study.n1) || isNaN(study.events2) || isNaN(study.n2)) {
+            throw new Error(`Invalid study data: ${line}`);
+          }
+
+          if (study.events1 < 0 || study.events2 < 0 || study.n1 <= 0 || study.n2 <= 0) {
+            throw new Error(`Invalid values in study: ${study.label}`);
+          }
+
+          if (study.events1 > study.n1 || study.events2 > study.n2) {
+            throw new Error(`Events cannot exceed sample size in study: ${study.label}`);
+          }
+
+          studies.push(study);
+        }
+
+        return studies;
+      } catch (error) {
+        showToast('Error parsing data: ' + error.message, 'error');
+        return null;
+      }
+    }
+
+    function runAnalysis() {
+      const format = document.getElementById('inputFormat').value;
+      const inputData = format === 'json' ? document.getElementById('studyData').value : document.getElementById('csvData').value;
+      const effectMeasure = document.getElementById('effectMeasure').value;
+
+      if (!inputData.trim()) {
+        showToast('Please enter study data', 'error');
+        return;
+      }
+
+      // Show loading
+      document.getElementById('loading').classList.remove('hidden');
+      document.getElementById('results').classList.add('hidden');
+
+      // Use setTimeout to allow UI to update
+      setTimeout(() => {
+        try {
+          const rawStudies = parseStudyData(inputData, format);
+          if (!rawStudies || rawStudies.length < 2) {
+            showToast('Please enter at least 2 valid studies', 'error');
+            document.getElementById('loading').classList.add('hidden');
+            return;
+          }
+
+          // Calculate effect sizes
+          const studies = rawStudies.map(s => calculateEffectSize(s, effectMeasure));
+
+          // Run meta-analysis
+          const feResult = fixedEffectsMetaAnalysis(studies);
+          const reResult = randomEffectsMetaAnalysis(studies);
+
+          if (feResult.error) {
+            showToast(feResult.error, 'error');
+            document.getElementById('loading').classList.add('hidden');
+            return;
+          }
+
+          // Render results
+          renderResults(studies, feResult, reResult, effectMeasure);
+          showToast('Analysis complete!', 'success');
+
+        } catch (error) {
+          showToast('Analysis error: ' + error.message, 'error');
+        } finally {
+          document.getElementById('loading').classList.add('hidden');
+        }
+      }, 100);
+    }
+
+    // ============================================================================
+    // EVENT HANDLERS
+    // ============================================================================
+
+    document.getElementById('inputFormat').addEventListener('change', (e) => {
+      const format = e.target.value;
+      document.getElementById('jsonExample').classList.toggle('hidden', format !== 'json');
+      document.getElementById('csvExample').classList.toggle('hidden', format !== 'csv');
+    });
+
+    document.getElementById('analyzeBtn').addEventListener('click', runAnalysis);
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      document.getElementById('studyData').value = '';
+      document.getElementById('csvData').value = '';
+      document.getElementById('results').classList.add('hidden');
+    });
+
+    document.getElementById('loadExampleBtn').addEventListener('click', () => {
+      const exampleData = `{"label": "Smith 2020", "events1": 45, "n1": 100, "events2": 60, "n2": 100}
+{"label": "Jones 2021", "events1": 38, "n1": 95, "events2": 52, "n2": 98}
+{"label": "Williams 2022", "events1": 42, "n1": 102, "events2": 55, "n2": 100}
+{"label": "Brown 2023", "events1": 35, "n1": 98, "events2": 48, "n2": 105}
+{"label": "Davis 2024", "events1": 40, "n1": 110, "events2": 50, "n2": 108}`;
+
+      document.getElementById('studyData').value = exampleData;
+      showToast('Example data loaded', 'info');
+    });
+
+    // Auto-run on page load with example data
+    window.addEventListener('load', () => {
+      // Uncomment to auto-load example:
+      // document.getElementById('loadExampleBtn').click();
+      // document.getElementById('analyzeBtn').click();
+    });
+  </script>
+</body>
+</html>

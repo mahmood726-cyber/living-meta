@@ -1,0 +1,57 @@
+{
+  "title": "Living Meta-Analysis: A CT.gov-Native Browser Application for Continuously Updated Evidence Synthesis",
+  "slug": "living-meta-analysis-ctgov",
+  "author": "Mahmood Ahmad",
+  "date": "2026-03-26",
+  "path": "C:\\HTML apps\\living-meta",
+  "type": "methods",
+  "primary_estimand": "Pooled treatment effect with sequential monitoring",
+  "summary": "A TypeScript web app automating living reviews with CT.gov surveillance, two-stage screening, and trial sequential analysis.",
+  "body": "Can a browser application automate the surveillance and analytic refresh cycles required for living systematic reviews of clinical evidence? Living Meta-Analysis is a TypeScript web application providing automated updates from ClinicalTrials.gov, two-stage screening with a rules engine, auto-fill data extraction, and pairwise meta-analysis using four heterogeneity estimators validated against R metafor. The platform implements network meta-analysis with inconsistency testing, trial sequential analysis with O-Brien-Fleming boundaries, robust variance estimation, selection models, and an evidence integrity module detecting outcome reporting bias. All core statistical methods passed validation with tau-squared matching within 0.0001 and prediction intervals using correct degrees-of-freedom specification. The evidence integrity module cross-references registered primary outcomes against published reports to flag selective reporting across the review timeline. This architecture enables clinical teams to maintain continuously updated evidence syntheses without switching between screening, analysis, and reporting tools. However, the limitation of API-only surveillance means studies not registered on ClinicalTrials.gov will be missed without manual supplementation from additional databases.",
+  "sentences": [
+    {
+      "role": "Question",
+      "text": "Can a browser application automate the surveillance and analytic refresh cycles required for living systematic reviews of clinical evidence?"
+    },
+    {
+      "role": "Dataset",
+      "text": "Living Meta-Analysis is a TypeScript web application providing automated updates from ClinicalTrials.gov, two-stage screening with a rules engine, auto-fill data extraction, and pairwise meta-analysis using four heterogeneity estimators validated against R metafor."
+    },
+    {
+      "role": "Method",
+      "text": "The platform implements network meta-analysis with inconsistency testing, trial sequential analysis with O-Brien-Fleming boundaries, robust variance estimation, selection models, and an evidence integrity module detecting outcome reporting bias."
+    },
+    {
+      "role": "Primary result",
+      "text": "All core statistical methods passed validation with tau-squared matching within 0.0001 and prediction intervals using correct degrees-of-freedom specification."
+    },
+    {
+      "role": "Robustness",
+      "text": "The evidence integrity module cross-references registered primary outcomes against published reports to flag selective reporting across the review timeline."
+    },
+    {
+      "role": "Interpretation",
+      "text": "This architecture enables clinical teams to maintain continuously updated evidence syntheses without switching between screening, analysis, and reporting tools."
+    },
+    {
+      "role": "Boundary",
+      "text": "However, the limitation of API-only surveillance means studies not registered on ClinicalTrials.gov will be missed without manual supplementation from additional databases."
+    }
+  ],
+  "notes": {
+    "app": "Living Meta-Analysis v1.0",
+    "data": "ClinicalTrials.gov API, R metafor validation",
+    "code": "https://github.com/mahmood726-cyber/living-meta",
+    "doi": "",
+    "version": "1.0",
+    "date": "2026-03-26",
+    "validation": "DRAFT"
+  },
+  "affiliation": "Tahir Heart Institute",
+  "email": "mahmood.ahmad2@nhs.net",
+  "references": [
+    "Salanti G. Indirect and mixed-treatment comparison, network, or multiple-treatments meta-analysis. Res Synth Methods. 2012;3(2):80-97.",
+    "Rucker G, Schwarzer G. Ranking treatments in frequentist network meta-analysis. BMC Med Res Methodol. 2015;15:58.",
+    "Dias S, Welton NJ, Caldwell DM, Ades AE. Checking consistency in mixed treatment comparison meta-analysis. Stat Med. 2010;29(7-8):932-944."
+  ]
+}
