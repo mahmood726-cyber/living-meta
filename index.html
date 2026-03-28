@@ -1,83 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Living Meta-Analysis Web App - CT.gov Registry-Native Evidence Synthesis">
-  <title>Living Meta-Analysis | CT.gov Evidence Synthesis</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="/src/styles/main.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Living Meta-Analysis: A CT.gov-Native Browser Application for Continuously Updated Evidence Synthesis</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;background:#FDFCFA;color:#1a1a1a;line-height:1.7}
+.page{max-width:700px;margin:0 auto;padding:3rem 1.5rem}
+.badge{font-family:system-ui,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:#7A5A10;margin-bottom:1rem}
+h1{font-size:1.8rem;margin-bottom:.5rem}
+.meta{font-family:system-ui,sans-serif;font-size:.85rem;color:#777;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid #E5E0D6}
+.summary{font-size:1.05rem;margin-bottom:2rem;color:#444}
+.links{display:grid;gap:.8rem;margin-bottom:2rem}
+.card{display:block;padding:1rem 1.2rem;background:#fff;border:1px solid #E5E0D6;border-radius:8px;text-decoration:none;color:#1a1a1a;font-family:system-ui,sans-serif;font-size:.9rem;transition:border-color .2s,box-shadow .2s}
+.card:hover{border-color:#7A5A10;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.card.app{border-left:4px solid #2E86C1}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+.figs img{width:100%;border-radius:6px;border:1px solid #E5E0D6}
+.footer{font-family:system-ui,sans-serif;font-size:.7rem;color:#aaa;padding-top:1rem;border-top:1px solid #E5E0D6}
+.footer a{color:#2E6B8A}
+</style>
 </head>
 <body>
-  <div id="app">
-    <!-- App shell -->
-    <div class="min-h-screen flex flex-col">
-      <!-- Header -->
-      <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between items-center h-16">
-            <div class="flex items-center space-x-4">
-              <a href="#/" class="flex items-center space-x-2">
-                <svg class="w-8 h-8 text-primary-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-                <span class="font-bold text-xl text-gray-900">Living Meta</span>
-              </a>
-              <nav id="main-nav" class="hidden md:flex space-x-1">
-                <!-- Navigation links injected by router -->
-              </nav>
-            </div>
-            <div class="flex items-center space-x-4">
-              <div id="sync-status" class="text-sm text-gray-500">
-                <!-- Sync status indicator -->
-              </div>
-              <button id="new-project-btn" class="btn-primary">
-                New Project
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+<div class="page">
+  <div class="badge">E156 Project</div>
+  <h1>Living Meta-Analysis: A CT.gov-Native Browser Application for Continuously Updated Evidence Synthesis</h1>
+  <div class="meta">Mahmood Ahmad &middot; Methods &middot; 2026-03-26</div>
+  <p class="summary">A TypeScript web app automating living reviews with CT.gov surveillance, two-stage screening, and trial sequential analysis.</p>
+  <div class="links">
+    <a href="e156-submission/index.html" class="card">E156 Micro-Paper (interactive reader)</a>
+    <a href="e156-submission/assets/living-meta-complete.html" class="card app">Living Meta Complete (interactive app)</a>
+    <a href="e156-submission/assets/living-meta-standalone.html" class="card app">Living Meta Standalone (interactive app)</a>
+    <a href="e156-submission/paper.md" class="card">Paper (markdown)</a>
+    <a href="e156-submission/protocol.md" class="card">Protocol (markdown)</a>
 
-      <!-- Main content -->
-      <main id="main-content" class="flex-1">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <!-- Route content injected here -->
-          <div id="route-view">
-            <!-- Loading state -->
-            <div class="flex items-center justify-center h-64">
-              <div class="spinner"></div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <!-- Footer -->
-      <footer class="bg-white border-t border-gray-200 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div class="flex justify-between items-center text-sm text-gray-500">
-            <p>Living Meta-Analysis v1.0.0 | CT.gov-only Phase 1</p>
-            <p>Data source: <a href="https://clinicaltrials.gov" target="_blank" rel="noopener" class="text-primary-600 hover:underline">ClinicalTrials.gov</a></p>
-          </div>
-        </div>
-      </footer>
-    </div>
-
-    <!-- Modal container -->
-    <div id="modal-container"></div>
-
-    <!-- Toast container -->
-    <div id="toast-container" class="fixed bottom-4 right-4 z-50 space-y-2"></div>
   </div>
-
-  <!-- Main app script -->
-  <script type="module" src="/src/app.js"></script>
+  <h2 style='font-family:system-ui,sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#7A5A10;margin-bottom:.8rem'>Figures</h2><div class=figs><img src="e156-submission/assets/figure01_overview_fullpage.png" alt="figure01_overview_fullpage.png" loading="lazy"><img src="e156-submission/assets/figure02_model_fullpage.png" alt="figure02_model_fullpage.png" loading="lazy"><img src="e156-submission/assets/figure03_results_fullpage.png" alt="figure03_results_fullpage.png" loading="lazy"><img src="e156-submission/assets/figure04_bias_fullpage.png" alt="figure04_bias_fullpage.png" loading="lazy"><img src="e156-submission/assets/figure05_report_fullpage.png" alt="figure05_report_fullpage.png" loading="lazy"><img src="e156-submission/assets/figure06_workflow_infographic.png" alt="figure06_workflow_infographic.png" loading="lazy"></div>
+  <div class="footer">
+    <a href="https://github.com/mahmood726-cyber/living-meta">&larr; Source on GitHub</a>
+    &middot; <a href="https://mahmood726-cyber.github.io/">All Projects</a>
+  </div>
+</div>
 </body>
 </html>
