@@ -141,7 +141,7 @@ export class OnboardingTutorial {
     this.isActive = false;
     this.element = null;
     this.targetElement = null;
-    this onComplete = null;
+    this.onComplete = null;
     this.onSkip = null;
   }
 

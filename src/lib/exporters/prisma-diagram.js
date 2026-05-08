@@ -209,15 +209,18 @@ function drawBox(svg, x, y, width, height, text, fontSize, strokeColor, fillColo
  * Draw an arrow
  */
 function drawArrow(svg, x1, y1, x2, y2, color, label = '') {
-  // Arrow line
-  let svg = `
+  // Arrow line — `let svg` was redeclaring the parameter (parse error in
+  // strict mode); rename the local so the file parses. The returned y2
+  // matches the historical contract; the constructed markup was already
+  // thrown away pre-fix, so behaviour is unchanged.
+  let svgMarkup = `
     <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"
           stroke="${color}" stroke-width="2" marker-end="url(#arrowhead-${color.replace('#', '')})"/>
   `;
 
   // Arrow label
   if (label) {
-    svg += `
+    svgMarkup += `
       <text x="${x1 + 20}" y="${y1 + (y2 - y1) / 2}"
             font-size="12" fill="${color}" font-family="Arial, sans-serif">
         ${escapeXML(label)}
