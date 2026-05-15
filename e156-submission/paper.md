@@ -1,6 +1,6 @@
 Mahmood Ahmad
 Tahir Heart Institute
-author@example.com
+mahmood.ahmad2@nhs.net
 
 Living Meta-Analysis: A CT.gov-Native Browser Application for Continuously Updated Evidence Synthesis
 
