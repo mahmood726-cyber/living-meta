@@ -61,6 +61,14 @@ function invlogit(x) {
  * Calculate sensitivity and specificity from 2x2 table
  */
 export function calculateDTAMetrics(tp, fp, fn, tn) {
+  // Continuity correction: add 0.5 to ALL cells only when at least one cell is
+  // zero. Avoids logit(0/1) = ±Infinity and 1/0 variance terms that would
+  // otherwise poison the bivariate fit (NaN propagation). Studies with no zero
+  // cell are left unchanged, so results match the uncorrected case (mada/Reitsma).
+  if (tp === 0 || fp === 0 || fn === 0 || tn === 0) {
+    tp += 0.5; fp += 0.5; fn += 0.5; tn += 0.5;
+  }
+
   const sens = tp / (tp + fn);
   const spec = tn / (tn + fp);
   const ppv = tp / (tp + fp);
